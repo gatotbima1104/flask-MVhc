@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import os
 import pickle
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -6,6 +7,7 @@ import numpy as np
 import pandas as pd
 
 app = Flask(__name__)
+CORS(app)
 
 model = pickle.load(open('./model/model.pkl', 'rb'))
 vectorization = pickle.load(open('./model/vector.pkl', 'rb'))
